@@ -1,0 +1,25 @@
+{
+    "name": "minerva-sdk-js-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "./node_modules/.bin/tsc",
+        "test": "./node_modules/.bin/mocha --opts ./test/mocha.opts"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lodash": "^4.17.4",
+        "mocha": "^4.0.1"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.85",
+        "@types/mocha": "^2.2.44",
+        "@types/node": "^8.0.53",
+        "@types/uuid": "^3.4.3",
+        "source-map-support": "^0.5.0",
+        "ts-node": "^3.3.0",
+        "typescript": "^2.6.1"
+    }
+}
