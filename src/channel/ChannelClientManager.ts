@@ -56,7 +56,6 @@ export class ChannelClientManager {
 
     private constructor() {
         Logger.debug(ChannelClientManager.TAG, "constructor enter");
-
     }
 
     init() {
@@ -235,27 +234,32 @@ export class ChannelClientManager {
                 case MinervaProtocol.CH_SETUP_SERVER_CHANNEL_CMD_ID: {
                     const res = new SetupServerChannelRes(msg.message);
                     this.handlerMap[RegIdGen.getResponseId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getResponseId(res)];
                     break;
                 }
 
                 case MinervaProtocol.MSG_SEND_UNICAST_CMD_ID: {
                     const res = new SendUnicastMsgRes(msg.message);
                     this.handlerMap[RegIdGen.getResponseId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getResponseId(res)];
                     break;
                 }
                 case MinervaProtocol.MSG_SEND_MULTICAST_CMD_ID: {
                     const res = new SendMulticastMsgRes(msg.message);
                     this.handlerMap[RegIdGen.getResponseId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getResponseId(res)];
                     break;
                 }
                 case MinervaProtocol.MSG_SEND_BROADCAST_CMD_ID: {
                     const res = new SendBroadcastMsgRes(msg.message);
                     this.handlerMap[RegIdGen.getResponseId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getResponseId(res)];
                     break;
                 }
                 case MinervaProtocol.MSG_SEND_GROUP_CMD_ID: {
                     const res = new SendGroupMsgRes(msg.message);
                     this.handlerMap[RegIdGen.getResponseId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getResponseId(res)];
                     break;
                 }
 
@@ -271,23 +275,27 @@ export class ChannelClientManager {
                 case MinervaProtocol.ASYNC_RES_DEVICE_GRP_CREATE_CMD_ID: {
                     const res = new AsyncResDeviceGrpCreated(msg.message);
                     this.handlerMap[RegIdGen.getAsyncRequestId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getAsyncRequestId(res)];
                     break;
 
                 }
                 case MinervaProtocol.ASYNC_RES_DEVICE_GRP_ADD_CMD_ID: {
                     const res = new AsyncResDeviceGrpAdded(msg.message);
                     this.handlerMap[RegIdGen.getAsyncRequestId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getAsyncRequestId(res)];
                     break;
 
                 }
                 case MinervaProtocol.ASYNC_RES_DEVICE_GRP_SUBTRACT_CMD_ID: {
                     const res = new AsyncResDeviceGrpSubtracted(msg.message);
                     this.handlerMap[RegIdGen.getAsyncRequestId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getAsyncRequestId(res)];
                     break;
                 }
                 case MinervaProtocol.ASYNC_RES_DEVICE_GRP_DELETE_CMD_ID: {
                     const res = new AsyncResDeviceGrpDeleted(msg.message);
                     this.handlerMap[RegIdGen.getAsyncRequestId(res)].resolve(res);
+                    delete this.handlerMap[RegIdGen.getAsyncRequestId(res)];
                     break;
                 }
 

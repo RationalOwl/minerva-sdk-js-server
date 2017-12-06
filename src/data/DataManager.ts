@@ -33,19 +33,19 @@ export class DataManager {
     // data operations related to device
     ////////////////////////////////////////////////      
 
-    public getMacAddress(): string {
-        return this.mDeviceFetcher.getMacAddress();
-    }
+    // public getMacAddress(): string {
+    //     return this.mDeviceFetcher.getMacAddress();
+    // }
 
 
-    public getHostName(): string {
-        return this.mDeviceFetcher.getHostName();
-    }
+    // public getHostName(): string {
+    //     return this.mDeviceFetcher.getHostName();
+    // }
 
 
-    public getIp(): string {
-        return this.mDeviceFetcher.getIp();
-    }
+    // public getIp(): string {
+    //     return this.mDeviceFetcher.getIp();
+    // }
 
 
     ////////////////////////////////////////////////
