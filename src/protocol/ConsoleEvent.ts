@@ -1,10 +1,7 @@
-import * as _ from "lodash";
 import { ConsoleJobEventParam } from "./ConsoleJobEvent";
 import { AsyncResDeviceGrpAddedParam } from "./devicegroup/stable/add/AsyncResDeviceGrpAdded";
 import { Packet } from "./Packet";
-
-
-
+import { cloneDeep } from "lodash";
 
 export type ConsoleEventJson = {
     cId: number;
@@ -19,7 +16,7 @@ export abstract class ConsoleEvent extends Packet {
     constructor(data: ConsoleEventJson | string | number) {
         super();
         if ('string' == typeof data) {
-            this.mJson = _.cloneDeep(JSON.parse(data));
+            this.mJson = cloneDeep(JSON.parse(data));
             this.mIsReceive = true;
         }
         if ('number' == typeof data) {
@@ -28,7 +25,7 @@ export abstract class ConsoleEvent extends Packet {
             };
         }
         if ('object' == typeof data) {
-            this.mJson = _.cloneDeep(data);
+            this.mJson = cloneDeep(data);
             this.mIsReceive = true;
         }
     }

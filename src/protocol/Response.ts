@@ -1,7 +1,7 @@
-import * as _ from "lodash";
 import { RequestJson, Request } from "./Request";
 import { Result } from "../Result";
 import { Packet } from "./Packet";
+import { cloneDeep } from "lodash";
 
 
 
@@ -23,7 +23,7 @@ export abstract class Response extends Packet {
             reqJson = Result.RESULT_OK;
         }
         if ('string' == typeof reqJson) {
-            this.mResJson = _.cloneDeep(JSON.parse(reqJson));
+            this.mResJson = cloneDeep(JSON.parse(reqJson));
             this.mIsReceive = true;
         } else if ('number' == typeof reqJson) {
             this.mResJson = {
@@ -43,7 +43,7 @@ export abstract class Response extends Packet {
                 pm: {}
             };
         } else if ('object' == typeof reqJson) {
-            this.mResJson = _.cloneDeep(reqJson);
+            this.mResJson = cloneDeep(reqJson);
             this.mIsReceive = true;
         }
     }

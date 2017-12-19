@@ -1,5 +1,5 @@
-import * as _ from "lodash";
 import { Packet } from "./Packet";
+import { cloneDeep } from "lodash";
 
 export type RequestJson = {
     cId: number;
@@ -13,7 +13,7 @@ export abstract class Request extends Packet {
     constructor(reqJson: RequestJson | string | number) {
         super();
         if ('string' == typeof reqJson) {
-            this.mReqJson = _.cloneDeep(JSON.parse(reqJson));
+            this.mReqJson = cloneDeep(JSON.parse(reqJson));
             this.mIsReceive = true;
         }
         if ('number' == typeof reqJson) {
@@ -22,7 +22,7 @@ export abstract class Request extends Packet {
             };
         }
         if ('object' == typeof reqJson) {
-            this.mReqJson = _.cloneDeep(reqJson);
+            this.mReqJson = cloneDeep(reqJson);
             this.mIsReceive = true;
         }
     }
