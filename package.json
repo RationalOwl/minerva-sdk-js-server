@@ -1,9 +1,12 @@
 {
-    "name": "minerva-sdk-js-server",
-    "version": "1.0.0",
+    "name": "rational-js-server",
+    "version": "1.2.0",
     "description": "",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
+        "prepare": "npm run build",
+        "prepublish": "npm run build",
         "build": "./node_modules/.bin/tsc",
         "api": "./node_modules/.bin/jsdoc --readme ./README.md --package ./package.json ./dist/src/AppServerManager.js -d dist/docs",
         "test": "./node_modules/.bin/mocha --opts ./test/mocha.opts"
