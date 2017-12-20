@@ -1,29 +1,29 @@
-# Rationalowl Minerva Node Server SDK
+# Rationalowl Node Server SDK
 
-> Rationalowl Minerva Node Server SDK는 Node.js로 구성된 서버에서 Minerva 실시간 메시지 전송을 이용할 수 있는 라이브러리입니다. 
+> Rationalowl Node Server SDK는 Node.js로 구성된 서버에서 실시간 메시지 전송을 이용할 수 있는 라이브러리입니다. 
 
 ## 목차
 
-- [Introduction](#Introduction)
+- [Introduction](#introduction)
 - [설치](#설치)
-  - [NPM](#NPM)
-  - [YARN](#YARN)
-- [앱 서버 등록/해제](#앱 서버 등록/해제)
-  - [registerAppServer](#registerAppServer)
-  - [unregisterAppServer](#unregisterAppServer)
-- [디바이스 그룹](#디바이스 그룹)
-  - [createDeviceGroup](#createDeviceGroup)
-  - [addDeviceGroup](#addDeviceGroup)
-  - [subtractDeviceGroup](#subtractDeviceGroup)
-  - [deleteDeviceGroup](#deleteDeviceGroup)
-- [메시지 발신](#메시지 발신)
-  - [sendUnicastMsg](#sendUnicastMsg)
-  - [sendMulticastMsg](#sendMulticastMsg)
-  - [sendBroadcastMsg](#sendBroadcastMsg)
-  - [sendGroupMsg](#sendGroupMsg)
-- [메시지 수신](#메시지 수신)
-  - [addReceivedUpstreamMsgListener](#addReceivedUpstreamMsgListener)
-  - [removeReceivedUpstreamMsgListener](#removeReceivedUpstreamMsgListener)
+  - [NPM](#npm)
+  - [YARN](#yarn)
+- [앱 서버 등록/해제](#앱-서버-등록-해제)
+  - [registerAppServer](#registerappserver)
+  - [unregisterAppServer](#unregisterappserver)
+- [디바이스 그룹](#디바이스-그룹)
+  - [createDeviceGroup](#createdevicegroup)
+  - [addDeviceGroup](#adddevicegroup)
+  - [subtractDeviceGroup](#subtractdevicegroup)
+  - [deleteDeviceGroup](#deletedevicegroup)
+- [메시지 발신](#메시지-발신)
+  - [sendUnicastMsg](#sendunicastmsg)
+  - [sendMulticastMsg](#sendmulticastmsg)
+  - [sendBroadcastMsg](#sendbroadcastmsg)
+  - [sendGroupMsg](#sendgroupmsg)
+- [메시지 수신](#메시지-수신)
+  - [addReceivedUpstreamMsgListener](#addreceivedupstreammsglistener)
+  - [removeReceivedUpstreamMsgListener](#removereceivedupstreammsglistener)
 
 ## Introduction
 
@@ -36,16 +36,16 @@
 ### NPM
 
 ```sh
-npm install --save minerva-node-sdk
+npm install --save rational-js-server
 ```
 
 ### YARN
 
 ```sh
-yarn add minerva-node-sdk
+yarn add rational-js-server
 ```
 
-## 앱 서버 등록/해제
+## 앱 서버 등록 해제
 
 앱 서버를 등록하여 메시지 수신/발신에 따른 추가적인 서비스를 구현 할 수 있습니다.
 서버 등록에 성공하면 서버 등록 아이디가 발급되고 이후 재 등록할 필요가 없습니다.
@@ -53,7 +53,7 @@ yarn add minerva-node-sdk
 ### registerAppServer
 
 ```js
-import { AppServerManager } from "minerva-node-sdk";
+import { AppServerManager } from "rational-js-server";
 const server = await AppServerManager.getInstance()
     .registerAppServer(serviceId, regName, gateHost, gatePort);
 /* server
