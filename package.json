@@ -1,13 +1,13 @@
 {
     "name": "rational-js-server",
-    "version": "1.0.3",
+    "version": "1.0.15",
     "description": "실시간 메시지 전송을 이용할 수 있는 라이브러리입니다.",
     "author": "RationalOwl",
     "license": "MIT",
-    "main": "index.js",
-    "module": "index.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
     "scripts": {
-        "prepare": "npm run build",
+        "postinstall": "npm run build",
         "build": "./node_modules/.bin/tsc",
         "api": "./node_modules/.bin/jsdoc --readme ./README.md --package ./package.json ./dist/src/AppServerManager.js -d dist/docs",
         "test": "./node_modules/.bin/mocha --opts ./test/mocha.opts"
@@ -17,10 +17,10 @@
         "url": "https://github.com/RationalOwl/rational-js-server.git"
     },
     "dependencies": {
-        "lodash.clonedeep": "^4.5.0"
+        "@types/lodash": "^4.14.91",
+        "lodash": "^4.17.4"
     },
     "devDependencies": {
-        "@types/lodash.clonedeep": "^4.5.3",
         "@types/mocha": "^2.2.44",
         "@types/node": "^8.0.53",
         "@types/uuid": "^3.4.3",

@@ -85,12 +85,14 @@ export class ChannelClientManager {
     }
 
 
-    private timeoutPromise = new Promise((resolve, reject) => {
-        let id = setTimeout(() => {
-            clearTimeout(id);
-            reject('Timed out in ' + ChannelClientManager.TIMEOUT + 'ms.')
-        }, ChannelClientManager.TIMEOUT)
-    })
+    private timeoutPromise = () => {
+        return new Promise((resolve, reject) => {
+            let id = setTimeout(() => {
+                clearTimeout(id);
+                reject('Timed out in ' + ChannelClientManager.TIMEOUT + 'ms.')
+            }, ChannelClientManager.TIMEOUT)
+        })
+    }; 
 
     request(msg: { packet: Request, data?: any }): Promise<Response | ConsoleEvent> {
         this.worker.send({ cmd: 'job', message: { packet: msg.packet.getJson(), data: msg.data } });
@@ -98,7 +100,7 @@ export class ChannelClientManager {
         const promise = new Promise((resolve, reject) => {
             this.handlerMap[RegIdGen.getRequestId(msg.packet)] = { resolve, reject };
         });
-        return <Promise<Response | ConsoleEvent>>Promise.race([promise, this.timeoutPromise]);
+        return <Promise<Response | ConsoleEvent>>Promise.race([promise, this.timeoutPromise()]);
     }
 
     requestToGate(msg: { packet: Request, data?: any }): Promise<Response> {
@@ -107,7 +109,7 @@ export class ChannelClientManager {
         const promise = new Promise((resolve, reject) => {
             this.handlerMap[RegIdGen.getRequestId(msg.packet)] = { resolve, reject };
         });
-        return <Promise<Response>>Promise.race([promise, this.timeoutPromise]);
+        return <Promise<Response>>Promise.race([promise, this.timeoutPromise()]);
     }
 
     private requestConnect(msg: { port: number, host: string, serviceId: string, regId: string }): Promise<Response | {}> {
@@ -119,7 +121,7 @@ export class ChannelClientManager {
         const promise = new Promise((resolve, reject) => {
             this.handlerMap[RegIdGen.getRequestId(req)] = { resolve, reject };
         });
-        return Promise.race([promise, this.timeoutPromise]);
+        return Promise.race([promise, this.timeoutPromise()]);
     }
 
     addReceivedUpstreamMsgListener(listener: UpstreamMessageListenerType) {
