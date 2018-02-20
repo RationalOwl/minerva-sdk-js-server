@@ -1,6 +1,6 @@
 {
     "name": "rational-js-server",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "description": "실시간 메시지 전송을 이용할 수 있는 라이브러리입니다.",
     "author": "RationalOwl",
     "license": "MIT",
@@ -19,12 +19,12 @@
         "url": "https://github.com/RationalOwl/rational-js-server.git"
     },
     "dependencies": {
+        "@types/lodash": "^4.14.104",
         "lodash": "^4.17.5"
     },
     "devDependencies": {
         "@types/async": "^2.0.47",
         "@types/bunyan": "^1.8.4",
-        "@types/lodash": "^4.14.104",
         "@types/log-update": "^2.0.0",
         "@types/mocha": "^2.2.48",
         "@types/node": "^8.9.4",
