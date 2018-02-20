@@ -287,7 +287,7 @@ export class AppServerManager {
      * @param  {string} [notiMsg=null] 알림 용도로 메시지 전달 시 단말앱이 비활성시 알림 내용으로 표시할 문자
      * @returns {Promise} 보낸 메시지에 대한 응답을 Promise로 리턴
      */
-    public sendMulticastMsg(data: string, deviceRegIds: string[], supportMsgQ: boolean, notiTitle: string = null, notiMsg: string = null) {
+    public sendMulticastMsg(data: string, deviceRegIds: string[], supportMsgQ: boolean = true, notiTitle: string = null, notiMsg: string = null) {
         Logger.debug(AppServerManager.TAG, "sendMulticastMsg enter");
         const dataMgr: DataManager = DataManager.getInstance();
         const req: SendMulticastMsgReq = new SendMulticastMsgReq();
@@ -326,7 +326,7 @@ export class AppServerManager {
      * @param  {string} [notiMsg=null] 알림 용도로 메시지 전달 시 단말앱이 비활성시 알림 내용으로 표시할 문자
      * @returns {Promise} 보낸 메시지에 대한 응답을 Promise로 리턴
      */
-    public sendBroadcastMsg(data: string, supportMsgQ: boolean, notiTitle: string = null, notiMsg: string = null) {
+    public sendBroadcastMsg(data: string, supportMsgQ: boolean = true, notiTitle: string = null, notiMsg: string = null) {
         Logger.debug(AppServerManager.TAG, "sendBroadcastMsg enter");
         const dataMgr: DataManager = DataManager.getInstance();
         const req: SendBroadcastMsgReq = new SendBroadcastMsgReq();
@@ -366,7 +366,7 @@ export class AppServerManager {
      * @param  {string} [notiMsg=null] 알림 용도로 메시지 전달 시 단말앱이 비활성시 알림 내용으로 표시할 문자
      * @returns {Promise} 보낸 메시지에 대한 응답을 Promise로 리턴
      */
-    public sendGroupMsg(data: string, deviceGroupId: string, supportMsgQ: boolean, notiTitle: string = null, notiMsg: string = null) {
+    public sendGroupMsg(data: string, deviceGroupId: string, supportMsgQ: boolean = true, notiTitle: string = null, notiMsg: string = null) {
         Logger.debug(AppServerManager.TAG, "sendGroupMsg enter");
         const dataMgr: DataManager = DataManager.getInstance();
         const req: SendGroupMsgReq = new SendGroupMsgReq();

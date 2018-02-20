@@ -55,12 +55,12 @@ process.on('message', (msg: { cmd: string, message: { packet: { [id: string]: an
                     readBuffer += buffer.toString();
                     if (readBuffer.includes('|')) {
                         const dataList = readBuffer.split('|');
-                        console.log('[Worker][read-from-gate] ', dataList[0]);
+                        Logger.debug('[Worker][read-from-gate] ', dataList[0]);
                         process.send({ cmd: 'gate', message: dataList[0] });
                         gateServerClient.destroy();
                     }
                 });
-                console.log('[Worker][write-to-gate] ', msg.message.packet);
+                Logger.debug('[Worker][write-to-gate] ', msg.message.packet);
                 gateServerClient.write(JSON.stringify(msg.message.packet) + '|');
             });
         }
@@ -73,12 +73,12 @@ process.on('message', (msg: { cmd: string, message: { packet: { [id: string]: an
                     readBuffer += buffer.toString();
                     if (readBuffer.includes('|')) {
                         const dataList = readBuffer.split('|');
-                        console.log('[Worker][read-from-gate] ', dataList[0]);
+                        Logger.debug('[Worker][read-from-gate] ', dataList[0]);
                         process.send({ cmd: 'gate', message: dataList[0] });
                         gateServerClient.destroy();
                     }
                 });
-                console.log('[Worker][write-to-gate] ', msg.message.packet);
+                Logger.debug('[Worker][write-to-gate] ', msg.message.packet);
                 gateServerClient.write(JSON.stringify(msg.message.packet) + '|');
             });
         }
@@ -96,24 +96,24 @@ client.on('data', function (buffer) {
 });
 
 process.on('exit', () => {
-    console.log('[Worker][exit]');
+    Logger.debug('[Worker][exit]');
     clearInterval(keepAliveSender);
     client.end();
     client.destroy();
 });
 
 process.on('disconnect', () => {
-    console.log('[Worker][disconnect]');
+    Logger.debug('[Worker][disconnect]');
 });
 
 client.on('error', function (err) {
-    console.log('[Worker][error] ', err);
+    Logger.debug('[Worker][error] ', err);
 });
 
 function handleData(data: string) {
     let object: any;
     let pack: Packet | null = null;
-    console.log('[Worker][read-from-channel] ', JSON.parse(data));
+    Logger.debug('[Worker][read-from-channel] ', JSON.parse(data));
     if(process.connected){
         process.send({ cmd: 'channel', message: data });
         try {
@@ -134,7 +134,7 @@ function handleData(data: string) {
 
 
 function writeData(socket: Socket, data: string) {
-    console.log('[Worker][write-to-channel] ', data);
+    Logger.debug('[Worker][write-to-channel] ', data);
     const success = !socket.write(data + '|');
     if (!success) {
         (function (socket, data) {

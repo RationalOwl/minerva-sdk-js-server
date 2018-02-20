@@ -1,8 +1,9 @@
 
 
-let logger = console;
+// let logger = console;
+let logger = { log: () => { }, debug: ()=> {} };
 
-export function setLogger(_logger: any){
+export function setLogger(_logger: any) {
     logger = _logger;
 }
 

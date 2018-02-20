@@ -69,7 +69,7 @@ export class ChannelClientManager {
         // this.worker.disconnect();
         this.worker.kill('SIGKILL');
         this.worker.on('exit', () => {
-            console.log('exit');
+            Logger.debug('exit');
             if (this.worker) {
                 this.worker.removeListener('message', this.onMessageHandler);
                 // this.worker.kill();
@@ -185,7 +185,7 @@ export class ChannelClientManager {
     }
 
     private onMessageHandler(msg: { cmd: string, message: any }) {
-        console.log('[Manager][onMessageHandler] ', msg);
+        Logger.debug('[Manager][onMessageHandler] ', msg);
         if (msg.cmd === 'gate') {
             const object = JSON.parse(msg.message);
             const cId = object.cId;
@@ -230,7 +230,7 @@ export class ChannelClientManager {
             const cId = object.cId;
             switch (cId) {
                 case MinervaProtocol.EVT_HEARTBEAT_SERVER_CMD_ID: {
-                    console.log('[EVT_HEARTBEAT_SERVER_CMD_ID] ', object);
+                    Logger.debug('[EVT_HEARTBEAT_SERVER_CMD_ID] ', object);
                     break;
                 }
                 case MinervaProtocol.CH_SETUP_SERVER_CHANNEL_CMD_ID: {
