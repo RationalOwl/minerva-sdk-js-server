@@ -12,10 +12,10 @@ export class SendGroupMsgRes extends Response {
 
 
     public getMsgId(): string {
-        return this.mResJson.pm.mid;
+        return this.mResJson.pm.mId;
     }
 
     public setMsgId(msgId: string) {
-        this.mResJson.pm.mid = msgId;
+        this.mResJson.pm.mId = msgId;
     }
 }

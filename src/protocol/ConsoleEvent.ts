@@ -40,14 +40,14 @@ export abstract class ConsoleEvent extends Packet {
     }
 
 
-    public setSrcTime(srcTime: number) {
-        this.mJson.st = srcTime;
-    }
+    // public setSrcTime(srcTime: number) {
+    //     this.mJson.st = srcTime;
+    // }
 
 
-    public getReqParam(): { [id: string]: any } {
-        return this.mJson.pm;
-    }
+    // public getReqParam(): { [id: string]: any } {
+    //     return this.mJson.pm;
+    // }
 
     public getJson(): ConsoleEventJson{
         return this.mJson;

@@ -23,9 +23,9 @@ export class ServerRegRes extends Response {
     }
 
 
-    public setServerRegId(serverRegId: string): void {
-        this.mResJson.pm.sRId = serverRegId;
-    }
+    // public setServerRegId(serverRegId: string): void {
+    //     this.mResJson.pm.sRId = serverRegId;
+    // }
 
 
     public getChannelUrl(): string {
@@ -33,9 +33,9 @@ export class ServerRegRes extends Response {
     }
 
 
-    public setChannelUrl(channelUrl: string): void {
-        this.mResJson.pm.cu = channelUrl;
-    }
+    // public setChannelUrl(channelUrl: string): void {
+    //     this.mResJson.pm.cu = channelUrl;
+    // }
 
 
     public getPrivateChannelUrl(): string {
@@ -43,7 +43,7 @@ export class ServerRegRes extends Response {
     }
 
 
-    public setPrivateChannelUrl(channelUrl: string): void {
-        this.mResJson.pm.pcu = channelUrl;
-    }
+    // public setPrivateChannelUrl(channelUrl: string): void {
+    //     this.mResJson.pm.pcu = channelUrl;
+    // }
 }

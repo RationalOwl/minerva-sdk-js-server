@@ -26,9 +26,9 @@ export class SetupServerChannelReq extends Request {
     }
 
 
-    public setRegId(regId: string): void {
-        this.mReqJson.pm.rId = regId;
-    }
+    // public setRegId(regId: string): void {
+    //     this.mReqJson.pm.rId = regId;
+    // }
 
 
     public getSrcType(): number {
@@ -36,9 +36,9 @@ export class SetupServerChannelReq extends Request {
     }
 
 
-    public setSrcType(srcType: number): void {
-        this.mReqJson.pm.st = srcType;
-    }
+    // public setSrcType(srcType: number): void {
+    //     this.mReqJson.pm.st = srcType;
+    // }
 
 
     public getServiceId(): string {
@@ -46,7 +46,7 @@ export class SetupServerChannelReq extends Request {
     }
 
 
-    public setServiceId(mServiceId: string): void {
-        this.mReqJson.pm.rId = mServiceId;
-    }
+    // public setServiceId(mServiceId: string): void {
+    //     this.mReqJson.pm.rId = mServiceId;
+    // }
 }

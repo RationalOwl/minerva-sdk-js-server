@@ -25,9 +25,9 @@ export class KeepAliveServerEvent extends Event {
     }
 
 
-    public setServiceId(serviceId: string) {
-        this.mReqJson.pm.sId = serviceId;
-    }
+    // public setServiceId(serviceId: string) {
+    //     this.mReqJson.pm.sId = serviceId;
+    // }
 
 
     public getRegId(): string {
@@ -35,9 +35,9 @@ export class KeepAliveServerEvent extends Event {
     }
 
 
-    public setRegId(deviceRegId: string) {
-        this.mReqJson.pm.rId = deviceRegId;
-    }
+    // public setRegId(deviceRegId: string) {
+    //     this.mReqJson.pm.rId = deviceRegId;
+    // }
 
 
     public getSrcType(): number {
@@ -45,7 +45,7 @@ export class KeepAliveServerEvent extends Event {
     }
 
 
-    public setSrcType(srcType: number) {
-        this.mReqJson.pm.st = srcType;
-    }
+    // public setSrcType(srcType: number) {
+    //     this.mReqJson.pm.st = srcType;
+    // }
 }

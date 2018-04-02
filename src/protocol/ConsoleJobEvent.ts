@@ -19,14 +19,14 @@ export abstract class ConsoleJobEvent extends ConsoleEvent {
         return this.mJson.pm.arc;
     }
 
-    public setAsyncResultCode(mAsyncResultCode: number) {
-        this.mJson.pm.arc = mAsyncResultCode;
-    }
+    // public setAsyncResultCode(mAsyncResultCode: number) {
+    //     this.mJson.pm.arc = mAsyncResultCode;
+    // }
 
 
-    public setSyncTime(syncTime: number) {
-        this.mJson.pm.syncT = syncTime;
-    }
+    // public setSyncTime(syncTime: number) {
+    //     this.mJson.pm.syncT = syncTime;
+    // }
 
 
     public getSyncTime(): number {
@@ -34,9 +34,9 @@ export abstract class ConsoleJobEvent extends ConsoleEvent {
     }
 
 
-    public setAsyncTime(asyncTime: number) {
-        this.mJson.pm.ast = asyncTime;
-    }
+    // public setAsyncTime(asyncTime: number) {
+    //     this.mJson.pm.ast = asyncTime;
+    // }
 
 
     public getAsyncTime(): number {

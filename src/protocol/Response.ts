@@ -59,9 +59,9 @@ export abstract class Response extends Packet {
     }
 
 
-    public setResultCode(resultCode: number): void {
-        this.mResJson.rc = resultCode;
-    }
+    // public setResultCode(resultCode: number): void {
+    //     this.mResJson.rc = resultCode;
+    // }
 
 
     public getSrcTime(): number {
@@ -69,18 +69,18 @@ export abstract class Response extends Packet {
     }
 
 
-    public setSrcTime(srcTime: number): void {
-        this.mResJson.st = srcTime;
-    }
+    // public setSrcTime(srcTime: number): void {
+    //     this.mResJson.st = srcTime;
+    // }
 
 
     public getSyncTime(): number {
         return Number(this.mResJson.syncT);
     }
 
-    public setSyncTime(syncTime: number): void {
-        this.mResJson.syncT = syncTime;
-    }
+    // public setSyncTime(syncTime: number): void {
+    //     this.mResJson.syncT = syncTime;
+    // }
 
     public getJson(): ResponseJson{
         return this.mResJson;

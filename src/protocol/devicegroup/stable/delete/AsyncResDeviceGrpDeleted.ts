@@ -23,9 +23,9 @@ export class AsyncResDeviceGrpDeleted extends ConsoleJobEvent {
     }
 
 
-    public setServiceId(serviceId: string) {
-        this.mJson.pm.sId = serviceId;
-    }
+    // public setServiceId(serviceId: string) {
+    //     this.mJson.pm.sId = serviceId;
+    // }
 
 
     public getGrpId(): string {
@@ -33,8 +33,8 @@ export class AsyncResDeviceGrpDeleted extends ConsoleJobEvent {
     }
 
 
-    public setGrpId(mGrpId: string) {
-        this.mJson.pm.gId = mGrpId;
-    }
+    // public setGrpId(mGrpId: string) {
+    //     this.mJson.pm.gId = mGrpId;
+    // }
 
 }

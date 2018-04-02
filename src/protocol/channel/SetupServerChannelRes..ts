@@ -22,7 +22,7 @@ export class SetupServerChannelRes extends Response {
         return this.mResJson.pm.hb;
     }
 
-    public setKeepAlive(keepAlive: number): void {
-        this.mResJson.pm.hb = keepAlive;
-    }
+    // public setKeepAlive(keepAlive: number): void {
+    //     this.mResJson.pm.hb = keepAlive;
+    // }
 }

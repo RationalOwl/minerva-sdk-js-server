@@ -26,9 +26,9 @@ export class AsyncResDeviceGrpSubtracted extends ConsoleJobEvent {
     }
 
 
-    public setServiceId(serviceId: string) {
-        this.mJson.pm.sId = serviceId;
-    }
+    // public setServiceId(serviceId: string) {
+    //     this.mJson.pm.sId = serviceId;
+    // }
 
 
 
@@ -37,9 +37,9 @@ export class AsyncResDeviceGrpSubtracted extends ConsoleJobEvent {
     }
 
 
-    public setGrpId(mGrpId: string) {
-        this.mJson.pm.gId = mGrpId;
-    }
+    // public setGrpId(mGrpId: string) {
+    //     this.mJson.pm.gId = mGrpId;
+    // }
 
 
     public getTotalDeviceSize(): number {
@@ -47,18 +47,18 @@ export class AsyncResDeviceGrpSubtracted extends ConsoleJobEvent {
     }
 
 
-    public setTotalDeviceSize(mDeviceSize: number) {
-        return this.mJson.pm.tds = mDeviceSize;
-    }
+    // public setTotalDeviceSize(mDeviceSize: number) {
+    //     return this.mJson.pm.tds = mDeviceSize;
+    // }
 
     public getSubtractDeviceSize(): number {
         return this.mJson.pm.sds;
     }
 
 
-    public setSubtractDeviceSize(mSubtractDeviceSize: number) {
-        return this.mJson.pm.sds = mSubtractDeviceSize;
-    }
+    // public setSubtractDeviceSize(mSubtractDeviceSize: number) {
+    //     return this.mJson.pm.sds = mSubtractDeviceSize;
+    // }
 
 
     public getFailedDevices(): string[] {
@@ -66,8 +66,8 @@ export class AsyncResDeviceGrpSubtracted extends ConsoleJobEvent {
     }
 
 
-    public setFailedDevices(mFailedDevices: string[]) {
-        this.mJson.pm.fd = mFailedDevices;
-    }
+    // public setFailedDevices(mFailedDevices: string[]) {
+    //     this.mJson.pm.fd = mFailedDevices;
+    // }
 
 }

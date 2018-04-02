@@ -24,9 +24,9 @@ export class DeliverUpstreamMsgReq extends Request {
     }
 
 
-    public setMsgs(msgs: any[]) {
-        this.mReqJson.pm.msgs = msgs;
-    }
+    // public setMsgs(msgs: any[]) {
+    //     this.mReqJson.pm.msgs = msgs;
+    // }
 
 
     public getServiceId(): string {
@@ -34,7 +34,7 @@ export class DeliverUpstreamMsgReq extends Request {
     }
 
 
-    public setServiceId(mServiceId: string) {
-        this.mReqJson.pm.sId = mServiceId;
-    }
+    // public setServiceId(mServiceId: string) {
+    //     this.mReqJson.pm.sId = mServiceId;
+    // }
 }

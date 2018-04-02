@@ -37,14 +37,14 @@ export abstract class Request extends Packet {
     }
 
 
-    public setSrcTime(srcTime: number): void {
-        this.mReqJson.st = srcTime;
-    }
+    // public setSrcTime(srcTime: number): void {
+    //     this.mReqJson.st = srcTime;
+    // }
 
 
-    public getReqParam(): { [id: string]: any } {
-        return this.mReqJson.pm;
-    }
+    // public getReqParam(): { [id: string]: any } {
+    //     return this.mReqJson.pm;
+    // }
 
     public getJson(): RequestJson {
         return this.mReqJson;
