@@ -32,6 +32,8 @@ let gatePort: number, gateHost: string;
 
 let keepAliveSender: NodeJS.Timer;
 
+const DELIMETER = '&#|';
+
 const process = global.process;
 
 process.on('message', (msg: { cmd: string, message: { packet: { [id: string]: any }, data: any } }, handle) => {
@@ -53,15 +55,15 @@ process.on('message', (msg: { cmd: string, message: { packet: { [id: string]: an
             gateServerClient.connect(msg.message.data.gate.port, msg.message.data.gate.host, () => {
                 gateServerClient.on('data', (buffer) => {
                     readBuffer += buffer.toString();
-                    if (readBuffer.includes('|')) {
-                        const dataList = readBuffer.split('|');
+                    if (readBuffer.includes(DELIMETER)) {
+                        const dataList = readBuffer.split(DELIMETER);
                         Logger.debug('[Worker][read-from-gate] ', dataList[0]);
                         process.send({ cmd: 'gate', message: dataList[0] });
                         gateServerClient.destroy();
                     }
                 });
                 Logger.debug('[Worker][write-to-gate] ', msg.message.packet);
-                gateServerClient.write(JSON.stringify(msg.message.packet) + '|');
+                gateServerClient.write(JSON.stringify(msg.message.packet) + DELIMETER);
             });
         }
         if (msg.message.packet.cId === MinervaProtocol.CS_SERVER_UNREG_CMD_ID) {
@@ -71,15 +73,15 @@ process.on('message', (msg: { cmd: string, message: { packet: { [id: string]: an
             gateServerClient.connect(gatePort, gateHost, () => {
                 gateServerClient.on('data', (buffer) => {
                     readBuffer += buffer.toString();
-                    if (readBuffer.includes('|')) {
-                        const dataList = readBuffer.split('|');
+                    if (readBuffer.includes(DELIMETER)) {
+                        const dataList = readBuffer.split(DELIMETER);
                         Logger.debug('[Worker][read-from-gate] ', dataList[0]);
                         process.send({ cmd: 'gate', message: dataList[0] });
                         gateServerClient.destroy();
                     }
                 });
                 Logger.debug('[Worker][write-to-gate] ', msg.message.packet);
-                gateServerClient.write(JSON.stringify(msg.message.packet) + '|');
+                gateServerClient.write(JSON.stringify(msg.message.packet) + DELIMETER);
             });
         }
     }
@@ -88,7 +90,7 @@ process.on('message', (msg: { cmd: string, message: { packet: { [id: string]: an
 client.on('data', function (buffer) {
     readBufferString += buffer.toString();
 
-    const dataList = readBufferString.split('|');
+    const dataList = readBufferString.split(DELIMETER);
     for (let i = 0; i < dataList.length - 1; i++) {
         handleData(dataList[i]);
     }
@@ -135,11 +137,11 @@ function handleData(data: string) {
 
 function writeData(socket: Socket, data: string) {
     Logger.debug('[Worker][write-to-channel] ', data);
-    const success = !socket.write(data + '|');
+    const success = !socket.write(data + DELIMETER);
     if (!success) {
         (function (socket, data) {
             socket.once('drain', function () {
-                writeData(socket, data + '|');
+                writeData(socket, data + DELIMETER);
             });
         })(socket, data)
     }

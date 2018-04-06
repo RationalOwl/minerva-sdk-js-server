@@ -3,24 +3,17 @@ import { AppServerManager } from "../src/AppServerManager";
 import 'source-map-support/register'
 
 import * as assert from 'assert';
+import { Logger, setLogger } from "../src/Logger";
 
-const SERVICE_ID = 'ab03d23035e74e2fbd868a6f243c2dd5';
+const SERVICE_ID = '4ac065b2b7b842628f6964a95f09dfc9';
 
 const DEVICE_ID_LIST = [
-    '35d612418f354c7eba8c6492813ddf2d',
-    '386dda6521bf40d58aa935022a5bb144',
-    '3b3e4a3ae2d0412ea3d3eaf3f1eda5c5',
-    '40b371b2c2ee460a887015d457e2d956',
-    '40bbaaba05c44160963d4d3dc3f95178',
-    '40f186b7666f413f83fb0754b02d21e4',
-    '425e58901bc3485a819a453a85053dff',
-    '466280bfa0994f80ae24a70d9343ddcc',
-    '4f1c05c6303245508eb2336314149d12',
-    '4f742a6a87494efab017b695181d5043',
-    '50535e1edd5c45dd9412cb96889f291e',
-    '55529cd8204f42f4874e5ea18b550276',
-    '57d12696740244d29dbd1cf01e9694e4',
-
+    "4ac065b2b7b842628f6964a95f09dfc9",
+    "c55f20d922344c9f95faaed1fed9207e",
+    "b66d666c656644498e56a457a8bd6066",
+    "32b316f7dbec4ab1af51aa4701947626",
+    "4f3961685dd3452ea1185868578a6b5c",
+    "bbb6194408e8435284c823666b51b4ad"
 ]
 
 describe('[Minerva]', function () {
@@ -28,8 +21,10 @@ describe('[Minerva]', function () {
     let server;
 
     before(async () => {
+        setLogger(console);
+
         server = await AppServerManager.getInstance()
-            .registerAppServer(SERVICE_ID, 'gyeongmin-app-server', 'gate.rationalowl.com', 9081);
+            .registerAppServer(SERVICE_ID, 'gyeongmin-app-server', 'localhost', 9081);
 
     });
 
@@ -46,35 +41,35 @@ describe('[Minerva]', function () {
     });
 
     it('createDeviceGroup', async () => {
-        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 5));
+        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 3));
 
         assert.equal(newGroup.resultCode, 1);
         assert.equal(newGroup.deviceGrpName, 'groupName');
-        assert.equal(newGroup.deviceSize, 5);
+        assert.equal(newGroup.deviceSize, 3);
         assert.equal(newGroup.desc, 'groupDesc');
     });
 
     it('addDeviceGroup', async () => {
-        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 5));
-        const addGrpMsg = await AppServerManager.getInstance().addDeviceGroup(newGroup.deviceGrpId, DEVICE_ID_LIST.slice(5, 10));
+        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 3));
+        const addGrpMsg = await AppServerManager.getInstance().addDeviceGroup(newGroup.deviceGrpId, DEVICE_ID_LIST.slice(3, 5));
 
         assert.equal(addGrpMsg.resultCode, 1);
-        assert.equal(addGrpMsg.totalDeviceSize, 10);
-        assert.equal(addGrpMsg.addedDeviceSize, 5);
+        assert.equal(addGrpMsg.totalDeviceSize, 5);
+        assert.equal(addGrpMsg.addedDeviceSize, 2);
     });
 
 
     it('subtractDeviceGroup', async () => {
-        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 10));
-        const subGrpMsg = await AppServerManager.getInstance().subtractDeviceGroup(newGroup.deviceGrpId, DEVICE_ID_LIST.slice(0, 5));
+        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 5));
+        const subGrpMsg = await AppServerManager.getInstance().subtractDeviceGroup(newGroup.deviceGrpId, DEVICE_ID_LIST.slice(0, 3));
 
         assert.equal(subGrpMsg.resultCode, 1);
-        assert.equal(subGrpMsg.totalDeviceSize, 5);
-        assert.equal(subGrpMsg.subtractDeviceSize, 5);
+        assert.equal(subGrpMsg.totalDeviceSize, 2);
+        assert.equal(subGrpMsg.subtractDeviceSize, 3);
     });
 
     it('deleteDeviceGroup', async () => {
-        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 5));
+        const newGroup = await AppServerManager.getInstance().createDeviceGroup('groupName', 'groupDesc', DEVICE_ID_LIST.slice(0, 3));
         const deleteGrpMsg = await AppServerManager.getInstance().deleteDeviceGroup(newGroup.deviceGrpId);
 
         assert.equal(deleteGrpMsg.resultCode, 1);
